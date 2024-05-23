@@ -13,9 +13,20 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
+    int stage;
+    
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1); 
+        stage = 0;
+    }
+    
+    public void setStage(int stage){
+        this.stage = stage;
+    }
+    
+    public int getStage(){
+        return stage;
     }
 }

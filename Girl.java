@@ -1,25 +1,26 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Pimple here.
+ * Write a description of class Girl here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Pimple extends Actor
+public class Girl extends Actor
 {
     /**
-     * Act - do whatever the Pimple wants to do. This method is called whenever
+     * Act - do whatever the Girl wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Pimple(){
-        GreenfootImage image = new GreenfootImage("Pimple0.png");
+    public Girl(){
+        MyWorld myWorld = (MyWorld)(getWorld());
+        GreenfootImage image = new GreenfootImage("Girl" + (int)(Math.random()*1) + myWorld.getStage() + ".png");
         image.scale(image.getWidth()/10, image.getHeight()/10);
         setImage(image);
     }
     
     public void act()
     {
-        setImage("Pimple1A.png");
+        // Add your action code here.
     }
 }
