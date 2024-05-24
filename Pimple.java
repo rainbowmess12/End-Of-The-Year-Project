@@ -14,12 +14,14 @@ public class Pimple extends Actor
      */
     public Pimple(){
         GreenfootImage image = new GreenfootImage("Pimple0.png");
-        image.scale(image.getWidth()/10, image.getHeight()/10);
+        image.scale(image.getWidth()/7, image.getHeight()/7);
         setImage(image);
     }
     
     public void act()
     {
-        setImage("Pimple1A.png");
+        GreenfootImage image = new GreenfootImage("Pimple1B.png");
+        image.scale((int)(image.getWidth()/7), (int)(image.getHeight()/7));
+        setImage(image);
     }
 }

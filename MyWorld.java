@@ -17,9 +17,13 @@ public class MyWorld extends World
     
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 600, 1); 
         stage = 0;
+        int girlNum = (int)(Math.random()*1);
+        Girl girl = new Girl("Girl" + girlNum + stage + ".png");
+        addObject(girl, 675, 300);
+        Tray tray = new Tray();
+        addObject(tray, 195, 300);
     }
     
     public void setStage(int stage){
