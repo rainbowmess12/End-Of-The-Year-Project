@@ -46,6 +46,7 @@ public class Wax extends Actor
             if(Greenfoot.mouseClicked(this) && turned){
                 clickable++;
                 if(clickable == 2){
+                    Greenfoot.playSound("Ow.mp3");
                     myWorld.setStage(myWorld.getStage()+1);
                     getWorld().removeObject(this);
                 }

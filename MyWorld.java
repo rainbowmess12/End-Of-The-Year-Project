@@ -24,6 +24,8 @@ public class MyWorld extends World
         addObject(girl, 675, 300);
         Tray tray = new Tray();
         addObject(tray, 195, 300);
+        Brush brush = new Brush();
+        addObject(brush, 180, 250);
         Wax wax = new Wax();
         addObject(wax, 180, 120);
     }
