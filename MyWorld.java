@@ -28,6 +28,29 @@ public class MyWorld extends World
         addObject(brush, 180, 250);
         Wax wax = new Wax();
         addObject(wax, 180, 120);
+        Marker marker = new Marker();
+        addObject(marker, 800, 435);
+        
+        for(int i = 0; i < 5; i++){
+            Pimple pimple = new Pimple();
+            int x = (int)(Math.random()*200)+575;
+            int y = (int)(Math.random()*200)+210;
+            while(!validPimple(x, y)){
+                x = (int)(Math.random()*250)+550;
+                y = (int)(Math.random()*250)+200;
+            }
+            addObject(pimple, x, y);
+        }
+    }
+    
+    public boolean validPimple(int x, int y){
+        if(560 < x && x < 780 && 200 < y && y < 250){
+            return true;
+        }
+        if((x < 640 || x > 700) && 360 < y && y < 410){
+            return true;
+        }
+        return false;
     }
     
     public void setStage(int stage){
