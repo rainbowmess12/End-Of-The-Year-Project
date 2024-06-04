@@ -9,4 +9,6 @@ comment3.params=stage
 comment3.target=void\ setStage(int)
 comment4.params=
 comment4.target=int\ getStage()
-numComments=5
+comment5.params=
+comment5.target=void\ sparkle()
+numComments=6
