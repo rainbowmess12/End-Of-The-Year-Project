@@ -24,16 +24,22 @@ public class Brush extends Actor
         MyWorld myWorld = (MyWorld)(getWorld());
         if(myWorld.getStage() == 1){
             if (Greenfoot.mouseDragged(this) && !turned){
+                GreenfootImage image = new GreenfootImage("Brush.png");
+                image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
+                image.setTransparency(255);
+                setImage(image);
                 MouseInfo mouse = Greenfoot.getMouseInfo();
                 setLocation(mouse.getX(), mouse.getY());
                 if(this.getX() > 300 && this.getX() < 600 && this.getY() > 100 && this.getY() < 400){
-                    GreenfootImage image = new GreenfootImage("Brush.png");
+                    image = new GreenfootImage("Brush.png");
                     image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
-                    setImage(image);    
+                    image.setTransparency(255);
+                    setImage(image);
                 }
                 else{
-                    GreenfootImage image = new GreenfootImage("Brush.png");
+                    image = new GreenfootImage("Brush.png");
                     image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
+                    image.setTransparency(255);
                     setImage(image);
                     turned = true;
                     setLocation(325, 200);
@@ -64,6 +70,12 @@ public class Brush extends Actor
                     getWorld().removeObject(this);
                 }
             }
+        }
+        else{
+            GreenfootImage image = new GreenfootImage("Brush.png");
+            image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
+            image.setTransparency(0);
+            setImage(image);  
         }
     }
 }

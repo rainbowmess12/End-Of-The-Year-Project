@@ -24,7 +24,7 @@ public class MyWorld extends World
         Circle circle = new Circle();
         addObject(circle, 800, 500);
         reset();
-        setPaintOrder(Start.class, Water.class, Shower.class, Wax.class, Pot.class, Brush.class, Bubble.class, Dirt.class, Eyebrows.class, Pimple.class, Sparkle.class, Girl.class, Circle.class, Chair.class);
+        setPaintOrder(Hand.class, Start.class, Water.class, Soap.class, Shower.class, Wax.class, Pot.class, Brush.class, Bubble.class, Dirt.class, Eyebrows.class, Sparkle.class, Pimple.class, Girl.class, Circle.class, Chair.class);
         Start start = new Start();
         addObject(start, 500, 300);
     }

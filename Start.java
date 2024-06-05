@@ -26,7 +26,7 @@ public class Start extends Actor
             move = true;
         }
         if(move){
-            image.setTransparency(image.getTransparency()-1);
+            image.setTransparency(image.getTransparency()-7);
         }
         if(image.getTransparency() < 4){
             getWorld().removeObject(this);

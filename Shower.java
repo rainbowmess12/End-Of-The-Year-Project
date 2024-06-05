@@ -23,10 +23,11 @@ public class Shower extends Actor
     public void act()
     {
         MyWorld myWorld = (MyWorld)(getWorld());
-        if(myWorld.getStage() == 2){
+        if(Greenfoot.mouseDragged(this) && myWorld.getStage() == 2){
             if (!turned){
-                MouseInfo mouse = Greenfoot.getMouseInfo();
-                setLocation(mouse.getX(), mouse.getY());
+                try{MouseInfo mouse = Greenfoot.getMouseInfo();
+                setLocation(mouse.getX(), mouse.getY());}
+                catch(Exception E){}
             }
             if(addWater == 10){
                 myWorld.makeWater(getX(), getY());
