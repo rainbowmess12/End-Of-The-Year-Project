@@ -9,13 +9,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Brush extends Actor
 {
     boolean turned;
+    GreenfootImage image = new GreenfootImage("Brush.png");
+    double i = 0.05;
     /**
      * Act - do whatever the Brush wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public Brush(){
-        GreenfootImage image = new GreenfootImage("Brush.png");
-        image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
+        image.setTransparency(0);
         setImage(image);
     }
     
@@ -23,24 +24,17 @@ public class Brush extends Actor
     {
         MyWorld myWorld = (MyWorld)(getWorld());
         if(myWorld.getStage() == 1){
-            if (Greenfoot.mouseDragged(this) && !turned){
-                GreenfootImage image = new GreenfootImage("Brush.png");
-                image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
+            if(i <= 0.7){
+                image = new GreenfootImage("Brush.png");
+                image.scale((int)(image.getWidth()*i), (int)(image.getHeight()*i));
                 image.setTransparency(255);
                 setImage(image);
+                i+=0.05;
+            }
+            if (Greenfoot.mouseDragged(this) && !turned){
                 MouseInfo mouse = Greenfoot.getMouseInfo();
                 setLocation(mouse.getX(), mouse.getY());
                 if(this.getX() > 300 && this.getX() < 600 && this.getY() > 100 && this.getY() < 400){
-                    image = new GreenfootImage("Brush.png");
-                    image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
-                    image.setTransparency(255);
-                    setImage(image);
-                }
-                else{
-                    image = new GreenfootImage("Brush.png");
-                    image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
-                    image.setTransparency(255);
-                    setImage(image);
                     turned = true;
                     setLocation(325, 200);
                     for(int i=0; i<50; i++){
@@ -72,8 +66,6 @@ public class Brush extends Actor
             }
         }
         else{
-            GreenfootImage image = new GreenfootImage("Brush.png");
-            image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
             image.setTransparency(0);
             setImage(image);  
         }

@@ -14,7 +14,7 @@ public class MyWorld extends World
      * 
      */
     int stage;
-    Pot pot;
+    boolean begin = false;
     
     public MyWorld()
     {    
@@ -22,11 +22,11 @@ public class MyWorld extends World
         GreenfootImage image = new GreenfootImage("Background.jpg");
         setBackground(image);
         Circle circle = new Circle();
-        addObject(circle, 800, 500);
-        reset();
+        addObject(circle, 725, 420);
         setPaintOrder(Hand.class, Start.class, Water.class, Soap.class, Shower.class, Wax.class, Pot.class, Brush.class, Bubble.class, Dirt.class, Eyebrows.class, Sparkle.class, Pimple.class, Girl.class, Circle.class, Chair.class);
         Start start = new Start();
         addObject(start, 500, 300);
+        stage = -1;
     }
     
     public void reset(){
@@ -35,21 +35,21 @@ public class MyWorld extends World
         Chair chair = new Chair();
         addObject(chair, 500, 500);
         Girl girl = new Girl("Girl" + girlNum);
-        addObject(girl, 500, 340);
+        addObject(girl, 350, 340);
         Eyebrows eyebrows = new Eyebrows();
-        addObject(eyebrows, 492, 265);
+        addObject(eyebrows, 342, 265);
         Brush brush = new Brush();
-        addObject(brush, 180, 250);
-        pot = new Pot();
-        addObject(pot, 830,400);
+        addObject(brush, 725, 425);
+        Pot pot = new Pot();
+        addObject(pot, 725,425);
         Wax wax = new Wax();
-        addObject(wax, 880, 200);
+        addObject(wax, 775, 175);
         Marker marker = new Marker();
         addObject(marker, 800, 435);
         Dirt dirt1 = new Dirt(0);
-        addObject(dirt1, 450, 600);
+        addObject(dirt1, 300, 600);
         Dirt dirt2 = new Dirt(1);
-        addObject(dirt2, 575, 380);
+        addObject(dirt2, 425, 380);
         Shower shower = new Shower();
         addObject(shower, 180, 500);
         generatePimples();
@@ -58,10 +58,10 @@ public class MyWorld extends World
     public void generatePimples(){
         for(int i = 0; i < 7; i++){
             Pimple pimple = new Pimple();
-            int x = (int)(Math.random()*160)+435;
+            int x = (int)(Math.random()*160)+285;
             int y = (int)(Math.random()*200)+210;
             while(!validPimple(x, y)){
-                x = (int)(Math.random()*160)+435;
+                x = (int)(Math.random()*160)+285;
                 y = (int)(Math.random()*200)+200;
             }
             addObject(pimple, x, y);
@@ -69,10 +69,10 @@ public class MyWorld extends World
     }
     
     public boolean validPimple(int x, int y){
-        if(405 < x && x < 605 && 200 < y && y < 240){
+        if(255 < x && x < 455 && 200 < y && y < 240){
             return true;
         }
-        if((x < 465 || x > 525) && 380 < y && y < 430){
+        if((x < 315 || x > 375) && 380 < y && y < 430){
             return true;
         }
         return false;
@@ -89,14 +89,10 @@ public class MyWorld extends World
     public void sparkle(){
         for(int i = 0; i < 15; i++){
             Sparkle sparkle = new Sparkle();
-            addObject(sparkle, (int)(Math.random()*350+300), (int)(Math.random()*350+100));
+            addObject(sparkle, (int)(Math.random()*350+150), (int)(Math.random()*500+100));
             Greenfoot.delay(2);
         }
         Greenfoot.delay(6);
-    }
-    
-    public int getPotLocation(){
-        return pot.getY();
     }
     
     public void makeWater(int x, int y){
@@ -115,5 +111,13 @@ public class MyWorld extends World
             Water water3 = new Water();
             addObject(water3, x+5, y-80);
         }
+    }
+    
+    public boolean getBegin(){
+        return begin;
+    }
+    
+    public void setBegin(){
+        begin = true;
     }
 }

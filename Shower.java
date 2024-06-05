@@ -18,22 +18,28 @@ public class Shower extends Actor
     GreenfootImage image2 = new GreenfootImage("Shower.png");
     public Shower(){
         image1.mirrorHorizontally();   
+        image1.setTransparency(0);
+        image2.setTransparency(0);
     }
     
     public void act()
     {
         MyWorld myWorld = (MyWorld)(getWorld());
-        if(Greenfoot.mouseDragged(this) && myWorld.getStage() == 2){
-            if (!turned){
-                try{MouseInfo mouse = Greenfoot.getMouseInfo();
-                setLocation(mouse.getX(), mouse.getY());}
-                catch(Exception E){}
+        if(myWorld.getStage() == 3){
+            image1.setTransparency(255);
+            image2.setTransparency(255);
+            if(Greenfoot.mouseDragged(this)){
+                if (!turned){
+                    try{MouseInfo mouse = Greenfoot.getMouseInfo();
+                    setLocation(mouse.getX(), mouse.getY());}
+                    catch(Exception E){}
+                }
+                if(addWater == 10){
+                    myWorld.makeWater(getX(), getY());
+                    addWater = 0;
+                }
+                addWater++;
             }
-            if(addWater == 10){
-                myWorld.makeWater(getX(), getY());
-                addWater = 0;
-            }
-            addWater++;
         }
         if(getX() < 500){
             setImage(image1);

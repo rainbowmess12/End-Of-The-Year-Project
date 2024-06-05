@@ -22,13 +22,17 @@ public class Start extends Actor
     
     public void act()
     {
+        MyWorld myWorld = (MyWorld)(getWorld());
         if(Greenfoot.mouseClicked(this)){
             move = true;
+            myWorld.reset();
         }
         if(move){
             image.setTransparency(image.getTransparency()-7);
         }
         if(image.getTransparency() < 4){
+            Greenfoot.delay(10);
+            myWorld.setBegin();
             getWorld().removeObject(this);
         }
     }

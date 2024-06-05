@@ -9,7 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Wax extends Actor
 {
-    double i = 0;
+    double n = 0;
+    double i = 0.05;
     boolean turned;
     int clickable;
     /**
@@ -17,22 +18,29 @@ public class Wax extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public Wax(){
-        GreenfootImage image = new GreenfootImage("Popsicle.png");
-        image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
-        setImage(image);
         turned = false;
         clickable = 0;
+        GreenfootImage image = new GreenfootImage("Pot.png");
+        image.setTransparency(0);
+        setImage(image);
     }
     
     public void act()
     {
         MyWorld myWorld = (MyWorld)(getWorld());
+        if(i <= 0.7 && myWorld.getStage() == 0 && myWorld.getBegin()){
+            GreenfootImage image = new GreenfootImage("Popsicle.png");
+            image.scale((int)(image.getWidth()*i), (int)(image.getHeight()*i));
+            image.setTransparency(255);
+            setImage(image);
+            i+=0.05;
+        }
         if(myWorld.getStage() == 0){
             if (Greenfoot.mouseDragged(this) && !turned){
                 MouseInfo mouse = Greenfoot.getMouseInfo();
                 setLocation(mouse.getX(), mouse.getY());
                 if(this.getX() > 300 && this.getX() < 600 && this.getY() > 200 && this.getY() < 400){
-                    setLocation(510, 307);
+                    setLocation(360, 307);
                     GreenfootImage image = new GreenfootImage("Wax.png");
                     image.scale((int)(image.getWidth()*1.1), (int)(image.getHeight()*1.1));
                     setImage(image);
@@ -58,7 +66,8 @@ public class Wax extends Actor
             }
         }
         if(!Greenfoot.mouseDragged(this) && !turned){
-            setLocation(getX(),myWorld.getPotLocation()-200);
+            setLocation(getX(), getY()+(int)(Math.sin(n)*3));
         }
+        n+=0.06;
     }
 }
