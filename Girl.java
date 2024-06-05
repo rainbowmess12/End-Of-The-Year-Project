@@ -15,9 +15,8 @@ public class Girl extends Actor
      */
     public Girl(String imageName){
         //GreenfootImage image = new GreenfootImage("Girl00.png");
-        MyWorld myWorld = (MyWorld)(getWorld());
         GreenfootImage image = new GreenfootImage(imageName + "0.png");
-        image.scale((int)(image.getWidth()*1.5), (int)(image.getHeight()*1.5));
+        image.scale((int)(image.getWidth()*0.5), (int)(image.getHeight()*0.5));
         setImage(image);
         this.imageName = imageName;
     }
@@ -26,10 +25,12 @@ public class Girl extends Actor
     {
         MyWorld myWorld = (MyWorld)(getWorld());
         GreenfootImage image = new GreenfootImage(imageName+myWorld.getStage()+".png");
-        image.scale((int)(image.getWidth()*1.5), (int)(image.getHeight()*1.5));
-        setImage(image);
         if(myWorld.getStage() == 2){
-            setLocation(650, 330);
+            image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
         }
+        else{
+            image.scale((int)(image.getWidth()*0.5), (int)(image.getHeight()*0.5));
+        }
+        setImage(image);
     }
 }
