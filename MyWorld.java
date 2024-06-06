@@ -15,6 +15,7 @@ public class MyWorld extends World
      */
     int stage;
     boolean begin = false;
+    int waterMade = 0;
     
     public MyWorld()
     {    
@@ -23,7 +24,9 @@ public class MyWorld extends World
         setBackground(image);
         Circle circle = new Circle();
         addObject(circle, 725, 420);
-        setPaintOrder(Hand.class, Start.class, Water.class, Soap.class, Shower.class, Wax.class, Pot.class, Brush.class, Bubble.class, Dirt.class, Eyebrows.class, Sparkle.class, Pimple.class, Girl.class, Circle.class, Chair.class);
+        DottedCircle dottedCircle = new DottedCircle();
+        addObject(dottedCircle, 725,420);
+        setPaintOrder(Sparkle.class, Hand.class, Start.class, Water.class, Soap.class, Wax.class, Pot.class, Brush.class, Shower.class, Bubble.class, Dirt.class, Eyebrows.class, Pimple.class, Girl.class, DottedCircle.class, Circle.class, Chair.class);
         Start start = new Start();
         addObject(start, 500, 300);
         stage = -1;
@@ -51,7 +54,7 @@ public class MyWorld extends World
         Dirt dirt2 = new Dirt(1);
         addObject(dirt2, 425, 380);
         Shower shower = new Shower();
-        addObject(shower, 180, 500);
+        addObject(shower, 705, 420);
         generatePimples();
     }
     
@@ -95,22 +98,25 @@ public class MyWorld extends World
         Greenfoot.delay(6);
     }
     
-    public void makeWater(int x, int y){
-        Water water1 = new Water();
+    public boolean makeWater(int x, int y){
         if(x < 500){
+            Water water1 = new Water(0 != (int)(Math.random()*10), y);
             addObject(water1, x-5, y-80);
-            Water water2 = new Water();
+            Water water2 = new Water(0 != (int)(Math.random()*10), y);
             addObject(water2, x+15, y-90);
-            Water water3 = new Water();
+            Water water3 = new Water(0 != (int)(Math.random()*10), y);
             addObject(water3, x+35, y-100);
         }
         else{
+            Water water1 = new Water(0 != (int)(Math.random()*10), y);
             addObject(water1, x-35, y-100);
-            Water water2 = new Water();
+            Water water2 = new Water(0 != (int)(Math.random()*10), y);
             addObject(water2, x-15, y-90);
-            Water water3 = new Water();
+            Water water3 = new Water(0 != (int)(Math.random()*10), y);
             addObject(water3, x+5, y-80);
         }
+        waterMade++;
+        return waterMade < 70;
     }
     
     public boolean getBegin(){

@@ -36,26 +36,26 @@ public class Brush extends Actor
                 setLocation(mouse.getX(), mouse.getY());
                 if(this.getX() > 300 && this.getX() < 600 && this.getY() > 100 && this.getY() < 400){
                     turned = true;
-                    setLocation(325, 200);
+                    setLocation(175, 200);
                     for(int i=0; i<50; i++){
-                        setLocation(325, this.getY()+7);
+                        setLocation(175, this.getY()+7);
                         Greenfoot.delay(1);
                     }
-                    setLocation(325, 200);
+                    setLocation(175, 200);
                     for(int i=0; i<50; i++){
-                        setLocation(325, this.getY()+7);
+                        setLocation(175, this.getY()+7);
                         Greenfoot.delay(1);
                     }
                     image.mirrorHorizontally();
                     setImage(image);
-                    setLocation(675, 200);
+                    setLocation(525, 200);
                     for(int i=0; i<50; i++){
-                        setLocation(675, this.getY()+7);
+                        setLocation(525, this.getY()+7);
                         Greenfoot.delay(1);
                     }
-                    setLocation(675, 200);
+                    setLocation(525, 200);
                     for(int i=0; i<50; i++){
-                        setLocation(675, this.getY()+7);
+                        setLocation(525, this.getY()+7);
                         Greenfoot.delay(1);
                     }
                     Greenfoot.delay(10);
