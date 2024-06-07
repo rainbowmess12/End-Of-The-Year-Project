@@ -12,58 +12,57 @@ public class Soap extends Actor
      * Act - do whatever the Soap wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    boolean turned;
+    int addBubble = 0;
     GreenfootImage image = new GreenfootImage("Soap.png");
     double i = 0.05;
+    public Soap(){
+        image.setTransparency(0);
+        setImage(image);
+    }
     
     public void act()
     {
         MyWorld myWorld = (MyWorld)(getWorld());
-        if(myWorld.getStage() == 1){
-            if(i <= 0.7){
-                image = new GreenfootImage("Brush.png");
-                image.scale((int)(image.getWidth()*i), (int)(image.getHeight()*i));
-                image.setTransparency(255);
-                setImage(image);
-                i+=0.05;
-            }
-            if (Greenfoot.mouseDragged(this) && !turned){
-                MouseInfo mouse = Greenfoot.getMouseInfo();
-                setLocation(mouse.getX(), mouse.getY());
-                if(this.getX() > 300 && this.getX() < 600 && this.getY() > 100 && this.getY() < 400){
-                    turned = true;
-                    setLocation(175, 200);
-                    for(int i=0; i<50; i++){
-                        setLocation(175, this.getY()+7);
-                        Greenfoot.delay(1);
-                    }
-                    setLocation(175, 200);
-                    for(int i=0; i<50; i++){
-                        setLocation(175, this.getY()+7);
-                        Greenfoot.delay(1);
-                    }
-                    image.mirrorHorizontally();
+        if(i <= 0.7 && myWorld.getStage() == 3){
+            image = new GreenfootImage("Soap.png");
+            image.scale((int)(image.getWidth()*i), (int)(image.getHeight()*i));
+            image.setTransparency(255);
+            setImage(image);
+            i+=0.05;
+        }
+        if(myWorld.getStage() == 3){
+            getWorld().setPaintOrder(Sparkle.class, Start.class, Wax.class, Pot.class, Brush.class, Shower.class, Soap.class, Towel.class, Bubble.class, Water.class, Dirt.class, Eyebrows.class, Pimple.class, Girl.class, DottedCircle.class, Circle.class, Chair.class);
+            if (Greenfoot.mouseDragged(this)){
+                try{MouseInfo mouse = Greenfoot.getMouseInfo();
+                setLocation(mouse.getX(), mouse.getY());}
+                catch(Exception E){}
+                if(this.getX() > 125 && this.getX() < 500){
+                    GreenfootImage image = new GreenfootImage("Hand.png");
+                    image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
                     setImage(image);
-                    setLocation(525, 200);
-                    for(int i=0; i<50; i++){
-                        setLocation(525, this.getY()+7);
-                        Greenfoot.delay(1);
-                    }
-                    setLocation(525, 200);
-                    for(int i=0; i<50; i++){
-                        setLocation(525, this.getY()+7);
-                        Greenfoot.delay(1);
-                    }
-                    Greenfoot.delay(10);
-                    myWorld.sparkle();
-                    myWorld.setStage(myWorld.getStage()+1);
-                    getWorld().removeObject(this);
                 }
+                else{
+                    GreenfootImage image = new GreenfootImage("Soap.png");
+                    image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
+                    setImage(image);
+                }
+                if(addBubble == 10){
+                    if(!myWorld.addBubble(getX(), getY())){
+                        myWorld.setStage(myWorld.getStage()+1);
+                    }
+                    addBubble = 0;
+                }
+                addBubble++;
             }
         }
-        else{
-            image.setTransparency(0);
-            setImage(image);  
+        if(myWorld.getStage() > 3){
+            image = new GreenfootImage("Hand.png");
+            image.scale((int)(image.getWidth()*i), (int)(image.getHeight()*i));
+            setImage(image);
+            i-=0.05;
+            if(i <= 0.05){
+                getWorld().removeObject(this);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class MyWorld here.
@@ -6,6 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
+
 public class MyWorld extends World
 {
 
@@ -15,7 +17,8 @@ public class MyWorld extends World
      */
     int stage;
     boolean begin = false;
-    int waterMade = 0;
+    ArrayList<Water> waters; 
+    ArrayList<Bubble> bubbles;
     
     public MyWorld()
     {    
@@ -26,7 +29,7 @@ public class MyWorld extends World
         addObject(circle, 725, 420);
         DottedCircle dottedCircle = new DottedCircle();
         addObject(dottedCircle, 725,420);
-        setPaintOrder(Sparkle.class, Hand.class, Start.class, Water.class, Soap.class, Wax.class, Pot.class, Brush.class, Shower.class, Bubble.class, Dirt.class, Eyebrows.class, Pimple.class, Girl.class, DottedCircle.class, Circle.class, Chair.class);
+        setPaintOrder(Sparkle.class, Start.class, Wax.class, Pot.class, Brush.class, Water.class, Shower.class, Soap.class, Bubble.class, Dirt.class, Eyebrows.class, Pimple.class, Girl.class, DottedCircle.class, Circle.class, Chair.class);
         Start start = new Start();
         addObject(start, 500, 300);
         stage = -1;
@@ -34,6 +37,8 @@ public class MyWorld extends World
     
     public void reset(){
         stage = 0;
+        waters = new ArrayList<Water>();
+        bubbles = new ArrayList<Bubble>();
         int girlNum = (int)(Math.random()*1);
         Chair chair = new Chair();
         addObject(chair, 500, 500);
@@ -55,6 +60,8 @@ public class MyWorld extends World
         addObject(dirt2, 425, 380);
         Shower shower = new Shower();
         addObject(shower, 705, 420);
+        Soap soap = new Soap();
+        addObject(soap, 725, 425);
         generatePimples();
     }
     
@@ -99,13 +106,16 @@ public class MyWorld extends World
     }
     
     public boolean makeWater(int x, int y){
-        if(x < 500){
+        if(x < 400 && x > 75){
             Water water1 = new Water(0 != (int)(Math.random()*10), y);
             addObject(water1, x-5, y-80);
             Water water2 = new Water(0 != (int)(Math.random()*10), y);
             addObject(water2, x+15, y-90);
             Water water3 = new Water(0 != (int)(Math.random()*10), y);
             addObject(water3, x+35, y-100);
+            waters.add(water1);
+            waters.add(water2);
+            waters.add(water3);
         }
         else{
             Water water1 = new Water(0 != (int)(Math.random()*10), y);
@@ -114,9 +124,11 @@ public class MyWorld extends World
             addObject(water2, x-15, y-90);
             Water water3 = new Water(0 != (int)(Math.random()*10), y);
             addObject(water3, x+5, y-80);
+            waters.add(water1);
+            waters.add(water2);
+            waters.add(water3);
         }
-        waterMade++;
-        return waterMade < 70;
+        return waters.size() < 47;
     }
     
     public boolean getBegin(){
@@ -125,5 +137,22 @@ public class MyWorld extends World
     
     public void setBegin(){
         begin = true;
+    }
+    
+    public boolean addBubble(int x, int y){
+        if(x < 500 && x > 75){
+            Bubble bubble = new Bubble();
+            addObject(bubble, x, y);
+            bubbles.add(bubble);
+        }
+        return bubbles.size() < 30;
+    }
+    
+    public void removeBubble(Bubble bubble){
+        bubbles.remove(bubble);
+    }
+    
+    public void removeWater(Water water){
+        waters.remove(water);
     }
 }

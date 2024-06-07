@@ -24,10 +24,17 @@ public class Water extends Actor
     
     public void act()
     {
+        if(isTouching(Towel.class)){
+            MyWorld myWorld = (MyWorld)(getWorld());
+            myWorld.removeWater(this);
+            getWorld().removeObject(this);
+        }
         if(move || getY() >= y+50){
             image.setTransparency(image.getTransparency()-2);
             setLocation(getX(), getY()+2);
             if(getY() >= 550 || image.getTransparency() <= 1){
+                MyWorld myWorld = (MyWorld)(getWorld());
+                myWorld.removeWater(this);
                 getWorld().removeObject(this);
             }
         }

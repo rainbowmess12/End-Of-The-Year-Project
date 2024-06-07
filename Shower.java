@@ -12,7 +12,6 @@ public class Shower extends Actor
      * Act - do whatever the Shower wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    boolean turned;
     int addWater = 4;
     double i = 0.1;
     GreenfootImage image1 = new GreenfootImage("Shower.png");
@@ -40,11 +39,9 @@ public class Shower extends Actor
             image1.setTransparency(255);
             image2.setTransparency(255);
             if(Greenfoot.mouseDragged(this)){
-                if (!turned){
-                    try{MouseInfo mouse = Greenfoot.getMouseInfo();
-                    setLocation(mouse.getX(), mouse.getY());}
-                    catch(Exception E){}
-                }
+                try{MouseInfo mouse = Greenfoot.getMouseInfo();
+                setLocation(mouse.getX(), mouse.getY());}
+                catch(Exception E){}
                 if(addWater == 10){
                     if(!myWorld.makeWater(getX(), getY())){
                         myWorld.setStage(myWorld.getStage()+1);

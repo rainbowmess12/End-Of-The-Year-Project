@@ -21,5 +21,10 @@ public class Bubble extends Actor
     }
     public void act()
     {
+        if(isTouching(Towel.class)){
+            MyWorld myWorld = (MyWorld)(getWorld());
+            myWorld.removeBubble(this);
+            getWorld().removeObject(this);
+        }
     }
 }

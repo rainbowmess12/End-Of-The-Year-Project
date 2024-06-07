@@ -25,7 +25,7 @@ public class Girl extends Actor
     {
         MyWorld myWorld = (MyWorld)(getWorld());
         GreenfootImage image = new GreenfootImage(imageName+myWorld.getStage()+".png");
-        if(myWorld.getStage() == 2){
+        if(myWorld.getStage() == 2 || myWorld.getStage() == 3 || myWorld.getStage() == 4){
             image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
         }
         else{

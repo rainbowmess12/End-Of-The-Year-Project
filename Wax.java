@@ -37,8 +37,9 @@ public class Wax extends Actor
         }
         if(myWorld.getStage() == 0){
             if (Greenfoot.mouseDragged(this) && !turned){
-                MouseInfo mouse = Greenfoot.getMouseInfo();
-                setLocation(mouse.getX(), mouse.getY());
+                try{MouseInfo mouse = Greenfoot.getMouseInfo();
+                setLocation(mouse.getX(), mouse.getY());}
+                catch(Exception E){}
                 if(this.getX() > 300 && this.getX() < 600 && this.getY() > 200 && this.getY() < 400){
                     setLocation(360, 307);
                     GreenfootImage image = new GreenfootImage("Wax.png");
