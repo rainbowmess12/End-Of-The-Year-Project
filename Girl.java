@@ -28,9 +28,13 @@ public class Girl extends Actor
         if(myWorld.getStage() == 2 || myWorld.getStage() == 3 || myWorld.getStage() == 4){
             image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
         }
+        else if(myWorld.getStage() == 5){
+            image.scale((int)(image.getWidth()*0.675), (int)(image.getHeight()*0.675));
+        }
         else{
             image.scale((int)(image.getWidth()*0.5), (int)(image.getHeight()*0.5));
         }
         setImage(image);
+        System.out.println(myWorld.getStage());
     }
 }

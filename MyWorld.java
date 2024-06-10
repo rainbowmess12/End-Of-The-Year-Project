@@ -62,6 +62,8 @@ public class MyWorld extends World
         addObject(shower, 705, 420);
         Soap soap = new Soap();
         addObject(soap, 725, 425);
+        Towel towel = new Towel();
+        addObject(towel, 725, 425);
         generatePimples();
     }
     

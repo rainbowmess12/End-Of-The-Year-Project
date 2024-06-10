@@ -15,6 +15,7 @@ public class Towel extends Actor
     GreenfootImage image = new GreenfootImage("Towel.png");
     double i = 0.05;
     public Towel(){
+        image.scale((int)(image.getWidth()*i), (int)(image.getHeight()*i));
         image.setTransparency(0);
         setImage(image);
     }
@@ -22,7 +23,7 @@ public class Towel extends Actor
     public void act()
     {
         MyWorld myWorld = (MyWorld)(getWorld());
-        if(i <= 0.7 && myWorld.getStage() == 4){
+        if(i <= 0.6 && myWorld.getStage() == 4){
             image = new GreenfootImage("Towel.png");
             image.scale((int)(image.getWidth()*i), (int)(image.getHeight()*i));
             image.setTransparency(255);
@@ -34,6 +35,9 @@ public class Towel extends Actor
                 try{MouseInfo mouse = Greenfoot.getMouseInfo();
                 setLocation(mouse.getX(), mouse.getY());}
                 catch(Exception E){}
+            }
+            if(myWorld.waters.size() == 0 && myWorld.bubbles.size() == 0){
+                myWorld.setStage(myWorld.getStage()+1);
             }
         }
         if(myWorld.getStage() > 4){

@@ -29,7 +29,7 @@ public class Water extends Actor
             myWorld.removeWater(this);
             getWorld().removeObject(this);
         }
-        if(move || getY() >= y+50){
+        try{if(move || getY() >= y+50){
             image.setTransparency(image.getTransparency()-2);
             setLocation(getX(), getY()+2);
             if(getY() >= 550 || image.getTransparency() <= 1){
@@ -37,6 +37,7 @@ public class Water extends Actor
                 myWorld.removeWater(this);
                 getWorld().removeObject(this);
             }
-        }
+        }}
+        catch(Exception E){}
     }
 }

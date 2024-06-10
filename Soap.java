@@ -15,6 +15,7 @@ public class Soap extends Actor
     int addBubble = 0;
     GreenfootImage image = new GreenfootImage("Soap.png");
     double i = 0.05;
+    boolean turned = false;
     public Soap(){
         image.setTransparency(0);
         setImage(image);
@@ -30,7 +31,7 @@ public class Soap extends Actor
             setImage(image);
             i+=0.05;
         }
-        if(myWorld.getStage() == 3){
+        if(myWorld.getStage() == 3 && !turned){
             getWorld().setPaintOrder(Sparkle.class, Start.class, Wax.class, Pot.class, Brush.class, Shower.class, Soap.class, Towel.class, Bubble.class, Water.class, Dirt.class, Eyebrows.class, Pimple.class, Girl.class, DottedCircle.class, Circle.class, Chair.class);
             if (Greenfoot.mouseDragged(this)){
                 try{MouseInfo mouse = Greenfoot.getMouseInfo();
@@ -49,6 +50,7 @@ public class Soap extends Actor
                 if(addBubble == 10){
                     if(!myWorld.addBubble(getX(), getY())){
                         myWorld.setStage(myWorld.getStage()+1);
+                        turned = true;
                     }
                     addBubble = 0;
                 }
