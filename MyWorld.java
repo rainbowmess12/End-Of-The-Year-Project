@@ -21,6 +21,7 @@ public class MyWorld extends World
     ArrayList<Bubble> bubbles;
     boolean smoking = false;
     ArrayList<Pimple> pimples;
+    ArrayList<Mask> masks;
      
     public MyWorld()
     {    
@@ -41,6 +42,7 @@ public class MyWorld extends World
         stage = 0;
         waters = new ArrayList<Water>();
         bubbles = new ArrayList<Bubble>();
+        masks = new ArrayList<Mask>();
         int girlNum = (int)(Math.random()*1);
         Chair chair = new Chair();
         addObject(chair, 350, 500);
@@ -68,6 +70,8 @@ public class MyWorld extends World
         addObject(towel, 725, 425);
         Squeezer squeezer = new Squeezer();
         addObject(squeezer, 740, 380);
+        Clay clay = new Clay();
+        addObject(clay, 740, 380);
         generatePimples();
     }
     
@@ -174,5 +178,12 @@ public class MyWorld extends World
         pimples.remove(pimple);
     }
     
-    public void generate
+    public boolean addMask(int x, int y){
+        if(((x-350)*(x-350))/(75*75)+((y-300)*(y-300))/(100*100) <= 1){
+            Mask mask = new Mask();
+            addObject(mask, x, y);
+            masks.add(mask);
+        }
+        return masks.size() < 300;
+    }
 }

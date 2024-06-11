@@ -15,7 +15,8 @@ public class Mask extends Actor
     
     public Mask(){
         GreenfootImage image = new GreenfootImage("Mask.png");
-        image.scale((int)(image.getWidth()*0.05), (int)(image.getHeight()*0.05));
+        image.scale((int)(image.getWidth()*0.1), (int)(image.getHeight()*0.1));
+        setImage(image);
     }
     
     public void act()
