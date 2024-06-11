@@ -51,6 +51,9 @@ public class Squeezer extends Actor
             image.setTransparency(0);
             setImage(image);  
         }
+        if(myWorld.getPimples().size() == 0){
+            myWorld.setStage(myWorld.getStage()+1);
+        }
         if(myWorld.getStage() > 5){
             GreenfootImage image = new GreenfootImage("Squeezer.png");
             image.scale((int)(image.getWidth()*i), (int)(image.getHeight()*i));

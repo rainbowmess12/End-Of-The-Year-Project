@@ -173,4 +173,6 @@ public class MyWorld extends World
     public void removePimple(Pimple pimple){
         pimples.remove(pimple);
     }
+    
+    public void generate
 }

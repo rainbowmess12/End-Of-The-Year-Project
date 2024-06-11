@@ -19,6 +19,7 @@ public class Girl extends Actor
         image.scale((int)(image.getWidth()*0.5), (int)(image.getHeight()*0.5));
         setImage(image);
         this.imageName = imageName;
+        Greenfoot.playSound("Background.mp3");
     }
     
     public void act()
