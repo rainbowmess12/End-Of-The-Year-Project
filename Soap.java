@@ -32,7 +32,7 @@ public class Soap extends Actor
             i+=0.05;
         }
         if(myWorld.getStage() == 3 && !turned){
-            getWorld().setPaintOrder(Sparkle.class, Start.class, Wax.class, Pot.class, Brush.class, Shower.class, Soap.class, Towel.class, Bubble.class, Water.class, Dirt.class, Eyebrows.class, Pimple.class, Girl.class, DottedCircle.class, Circle.class, Chair.class);
+            getWorld().setPaintOrder(Smoke.class, Start.class, Wax.class, Pot.class, Brush.class, Shower.class, Soap.class, Towel.class, Squeezer.class, Bubble.class, Water.class, Dirt.class, Eyebrows.class, Pimple.class, Girl.class, DottedCircle.class, Circle.class, Chair.class);
             if (Greenfoot.mouseDragged(this)){
                 try{MouseInfo mouse = Greenfoot.getMouseInfo();
                 setLocation(mouse.getX(), mouse.getY());}

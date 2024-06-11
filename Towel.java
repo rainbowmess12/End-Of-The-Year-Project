@@ -14,6 +14,7 @@ public class Towel extends Actor
      */
     GreenfootImage image = new GreenfootImage("Towel.png");
     double i = 0.05;
+    boolean smoked = false;
     public Towel(){
         image.scale((int)(image.getWidth()*i), (int)(image.getHeight()*i));
         image.setTransparency(0);
@@ -36,8 +37,9 @@ public class Towel extends Actor
                 setLocation(mouse.getX(), mouse.getY());}
                 catch(Exception E){}
             }
-            if(myWorld.waters.size() == 0 && myWorld.bubbles.size() == 0){
-                myWorld.setStage(myWorld.getStage()+1);
+            if(!smoked && myWorld.waters.size() == 0 && myWorld.bubbles.size() == 0){
+                myWorld.smoke();
+                smoked = true;
             }
         }
         if(myWorld.getStage() > 4){

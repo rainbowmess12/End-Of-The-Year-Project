@@ -27,14 +27,16 @@ public class Girl extends Actor
         GreenfootImage image = new GreenfootImage(imageName+myWorld.getStage()+".png");
         if(myWorld.getStage() == 2 || myWorld.getStage() == 3 || myWorld.getStage() == 4){
             image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
+            setLocation(350, 340);
         }
-        else if(myWorld.getStage() == 5){
+        else if(myWorld.getStage() == 5 || myWorld.getStage() == 6){
             image.scale((int)(image.getWidth()*0.675), (int)(image.getHeight()*0.675));
+            setLocation(350, 350);
         }
         else{
             image.scale((int)(image.getWidth()*0.5), (int)(image.getHeight()*0.5));
+            setLocation(350, 340);
         }
         setImage(image);
-        System.out.println(myWorld.getStage());
     }
 }

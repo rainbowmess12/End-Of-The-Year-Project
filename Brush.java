@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Brush extends Actor
 {
-    boolean turned;
+    boolean turned = false;
     GreenfootImage image = new GreenfootImage("Brush.png");
     double i = 0.05;
     /**
@@ -59,10 +59,12 @@ public class Brush extends Actor
                         Greenfoot.delay(1);
                     }
                     Greenfoot.delay(10);
-                    myWorld.sparkle();
-                    myWorld.setStage(myWorld.getStage()+1);
-                    getWorld().removeObject(this);
+                    turned = true;
+                    myWorld.smoke();
                 }
+            }
+            if(turned && !myWorld.smoking){
+                getWorld().removeObject(this);
             }
         }
         else{

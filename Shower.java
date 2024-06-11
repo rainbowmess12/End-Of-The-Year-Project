@@ -59,7 +59,6 @@ public class Shower extends Actor
         }
         if(myWorld.getStage() > 2){
             GreenfootImage image = new GreenfootImage("Shower.png");
-            image.setTransparency(255);
             image.scale((int)(image.getWidth()*i), (int)(image.getHeight()*i));
             setImage(image);
             i-=0.05;

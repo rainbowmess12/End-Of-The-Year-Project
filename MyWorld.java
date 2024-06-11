@@ -19,7 +19,9 @@ public class MyWorld extends World
     boolean begin = false;
     ArrayList<Water> waters; 
     ArrayList<Bubble> bubbles;
-    
+    boolean smoking = false;
+    ArrayList<Pimple> pimples;
+     
     public MyWorld()
     {    
         super(1000, 600, 1);
@@ -29,7 +31,7 @@ public class MyWorld extends World
         addObject(circle, 725, 420);
         DottedCircle dottedCircle = new DottedCircle();
         addObject(dottedCircle, 725,420);
-        setPaintOrder(Sparkle.class, Start.class, Wax.class, Pot.class, Brush.class, Water.class, Shower.class, Soap.class, Bubble.class, Dirt.class, Eyebrows.class, Pimple.class, Girl.class, DottedCircle.class, Circle.class, Chair.class);
+        setPaintOrder(Smoke.class, Start.class, Wax.class, Pot.class, Brush.class, Water.class, Shower.class, Soap.class, Bubble.class, Dirt.class, Eyebrows.class, Pimple.class, Girl.class, DottedCircle.class, Circle.class, Chair.class);
         Start start = new Start();
         addObject(start, 500, 300);
         stage = -1;
@@ -41,7 +43,7 @@ public class MyWorld extends World
         bubbles = new ArrayList<Bubble>();
         int girlNum = (int)(Math.random()*1);
         Chair chair = new Chair();
-        addObject(chair, 500, 500);
+        addObject(chair, 350, 500);
         Girl girl = new Girl("Girl" + girlNum);
         addObject(girl, 350, 340);
         Eyebrows eyebrows = new Eyebrows();
@@ -64,10 +66,13 @@ public class MyWorld extends World
         addObject(soap, 725, 425);
         Towel towel = new Towel();
         addObject(towel, 725, 425);
+        Squeezer squeezer = new Squeezer();
+        addObject(squeezer, 740, 380);
         generatePimples();
     }
     
     public void generatePimples(){
+        pimples = new ArrayList<Pimple>();
         for(int i = 0; i < 7; i++){
             Pimple pimple = new Pimple();
             int x = (int)(Math.random()*160)+285;
@@ -77,11 +82,12 @@ public class MyWorld extends World
                 y = (int)(Math.random()*200)+200;
             }
             addObject(pimple, x, y);
+            pimples.add(pimple);
         }
     }
     
     public boolean validPimple(int x, int y){
-        if(255 < x && x < 455 && 200 < y && y < 240){
+        if(264 < x && x < 400 && 200 < y && y < 240){
             return true;
         }
         if((x < 315 || x > 375) && 380 < y && y < 430){
@@ -92,19 +98,17 @@ public class MyWorld extends World
     
     public void setStage(int stage){
         this.stage = stage;
+        System.out.println(stage);
     }
     
     public int getStage(){
         return stage;
     }
     
-    public void sparkle(){
-        for(int i = 0; i < 15; i++){
-            Sparkle sparkle = new Sparkle();
-            addObject(sparkle, (int)(Math.random()*350+150), (int)(Math.random()*500+100));
-            Greenfoot.delay(2);
-        }
-        Greenfoot.delay(6);
+    public void smoke(){
+        smoking = true;
+        Smoke smoke = new Smoke();
+        addObject(smoke, 310, 320);
     }
     
     public boolean makeWater(int x, int y){
@@ -156,5 +160,17 @@ public class MyWorld extends World
     
     public void removeWater(Water water){
         waters.remove(water);
+    }
+    
+    public void setSmoking(boolean val){
+        smoking = val;
+    }
+    
+    public ArrayList<Pimple> getPimples(){
+        return this.pimples;
+    }
+    
+    public void removePimple(Pimple pimple){
+        pimples.remove(pimple);
     }
 }
