@@ -37,15 +37,6 @@ public class Brush extends Actor
                 if(this.getX() > 300 && this.getX() < 600 && this.getY() > 100 && this.getY() < 400){
                     turned = true;
                     setLocation(175, 200);
-                    for(int i=0; i<50; i++){
-                        setLocation(175, this.getY()+7);
-                        Greenfoot.delay(1);
-                    }
-                    setLocation(175, 200);
-                    for(int i=0; i<50; i++){
-                        setLocation(175, this.getY()+7);
-                        Greenfoot.delay(1);
-                    }
                     image.mirrorHorizontally();
                     setImage(image);
                     setLocation(525, 200);
@@ -58,6 +49,18 @@ public class Brush extends Actor
                         setLocation(525, this.getY()+7);
                         Greenfoot.delay(1);
                     }
+                    image.mirrorHorizontally();
+                    setImage(image);
+                    setLocation(175, 200);
+                    for(int i=0; i<50; i++){
+                        setLocation(175, this.getY()+7);
+                        Greenfoot.delay(1);
+                    }
+                    setLocation(175, 200);
+                    for(int i=0; i<50; i++){
+                        setLocation(175, this.getY()+7);
+                        Greenfoot.delay(1);
+                    }
                     Greenfoot.delay(10);
                     turned = true;
                     myWorld.smoke();
@@ -67,14 +70,10 @@ public class Brush extends Actor
                 getWorld().removeObject(this);
             }
         }
-        else{
-<<<<<<< HEAD
+         else{
             GreenfootImage image = new GreenfootImage("Brush.png");
             image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
-            image.setTransparency(255);
-=======
             image.setTransparency(0);
->>>>>>> a50ad4dfa0fc8e8e6c5b839197463f71fa21796a
             setImage(image);  
         }
     }
