@@ -74,7 +74,7 @@ public class Brush extends Actor
         else{
             GreenfootImage image = new GreenfootImage("Brush.png");
             image.scale((int)(image.getWidth()*0.7), (int)(image.getHeight()*0.7));
-            image.setTransparency(0);
+            image.setTransparency(255);
             setImage(image);  
         }
     }
