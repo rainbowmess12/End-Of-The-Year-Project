@@ -22,6 +22,8 @@ public class Dirt extends Actor
     
     public void act()
     {
-        // Add your action code here.
+        if(isTouching(Towel.class)){
+            getWorld().removeObject(this);
+        }
     }
 }
